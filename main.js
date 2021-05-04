@@ -6,9 +6,9 @@ export default function main()
     let container = document.querySelector('#container');
     let renderer = new THREE.WebGLRenderer({ antialias : true });
 
-    //let renderer = new THREE.WebGLRenderer({ antialias : true });
-    //renderer.xr.enabled = true;
-    //container.appendChild(VRButton.createButton(renderer));
+    let renderer = new THREE.WebGLRenderer({ antialias : true });
+    renderer.xr.enabled = true;
+    container.appendChild(VRButton.createButton(renderer));
 
     let canvas = renderer.domElement;
     container.appendChild(canvas);
