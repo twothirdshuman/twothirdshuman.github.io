@@ -66,3 +66,12 @@ export default function main()
     }
     renderer.setAnimationLoop(update);
 }
+function onResize () {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', onResize);
+window.addEventListener('wheel', function(event) {
+    event.preventDefault();
+}, {passive: false, capture: true});
