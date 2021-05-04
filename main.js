@@ -65,13 +65,14 @@ export default function main()
         renderer.render(scene, camera);
     }
     renderer.setAnimationLoop(update);
+
+    function onResize () {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', onResize);
+    window.addEventListener('wheel', function(event) {
+        event.preventDefault();
+    }, {passive: false, capture: true});
 }
-function onResize () {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-}
-window.addEventListener('resize', onResize);
-window.addEventListener('wheel', function(event) {
-    event.preventDefault();
-}, {passive: false, capture: true});
