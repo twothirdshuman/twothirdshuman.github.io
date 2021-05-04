@@ -1,9 +1,15 @@
 import * as THREE from './three/build/three.module.js';
+import { VRButton } from '../three/examples/jsm/webxr/VRButton.js';
 
 export default function main()
 {
     let container = document.querySelector('#container');
     let renderer = new THREE.WebGLRenderer({ antialias : true });
+
+    //let renderer = new THREE.WebGLRenderer({ antialias : true });
+    //renderer.xr.enabled = true;
+    //container.appendChild(VRButton.createButton(renderer));
+
     let canvas = renderer.domElement;
     container.appendChild(canvas);
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -13,7 +19,7 @@ export default function main()
     
     //Create a Camera and add it to the scene
     let camera = new THREE.PerspectiveCamera(
-        45, //Field of View Angle
+        89, //Field of View Angle
         window.innerWidth / window.innerHeight, //Aspect Ratio
         0.1, //Clipping for things closer than this amount
         1000 //Clipping for things farther than this amount
