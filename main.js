@@ -4,7 +4,7 @@ import { VRButton } from '../three/examples/jsm/webxr/VRButton.js';
 export default function main()
 {
     let container = document.querySelector('#container');
-    let renderer = new THREE.WebGLRenderer({ antialias : true });
+    //let renderer = new THREE.WebGLRenderer({ antialias : true });
 
     let renderer = new THREE.WebGLRenderer({ antialias : true });
     renderer.xr.enabled = true;
