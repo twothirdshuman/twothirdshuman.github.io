@@ -1,14 +1,30 @@
-$ = (queryString) => document.querySelector(queryString);
+/*jshint esversion: 6 */
+/*jshint browser: true */
+/*jshint devel: true */
 
-const shiftHue = (hue) => (hue + 1) % 255;
+const $ = (query) => document.querySelector(query);
 
-let hue = 0;
+const sphere = $('a-sphere');
+const plane = $('a-plane');
 
-const loop = () => {
-    hue = shiftHue(hue);
-    const color = `hsl(${hue} , 100%, 50%)`;
-    $('a-sphere').setAttribute("color", color);
-    requestAnimationFrame(loop);
+const shiftDegrees = (value) => (value + 1) % 360;
+
+let degrees = 0;
+
+const animate = () => {
+  degrees = shiftDegrees(degrees);
+  const color = `hsl(${degrees}, 100%, 50%)`;
+  const variation = Math.sin(Date.now() / 1000);
+  const position = `0 ${1.5 + variation} -2`;
+  const rotation = `-90 0 ${degrees}`;
+
+  sphere.setAttribute('color', color);
+  sphere.setAttribute('position', position);
+
+  plane.setAttribute('color', color);
+  plane.setAttribute('rotation', rotation);
+
+  requestAnimationFrame(animate);
 };
 
-requestAnimationFrame(loop);
+requestAnimationFrame(animate);
