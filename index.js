@@ -1,6 +1,6 @@
 $ = (queryString) => document.querySelector(queryString);
 
-const shiftHue = (hue) => (hue + 1) % 360;
+const shiftHue = (hue) => (hue + 1) % 255;
 
 let hue = 0;
 
