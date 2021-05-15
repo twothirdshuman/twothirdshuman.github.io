@@ -6,6 +6,7 @@ const $ = (query) => document.querySelector(query);
 
 const sphere = $('a-sphere');
 const plane = $('a-plane');
+const camera = $('a-camera');
 /*
 const shiftDegrees = (value) => (value + 1) % 360;
 
@@ -29,28 +30,17 @@ const animate = () => {
 
 requestAnimationFrame(animate);
 */
-AFRAME.registerComponent('my-animation', { 
+
+AFRAME.registerComponent('vrcamera', { 
+
  init: function () {
-   var self = this;
-   this.time = 0;
-   this.animation = AFRAME.ANIME({
-    targets: [{x: -Math.PI / 2, y: 0, z: 0}],
-    x: -Math.PI / 2, y: 0, z: 2*Math.PI,
-    autoplay: false,
-    duration: 20000,
-    easing: "linear",
-    loop: true,
-    round: false,
-    update: function (animation) {
-      var value = animation.animatables[0].target;
-      self.el.object3D.rotation.set(value.x, value.y, value.z);
-    }
-   });
-   this.animation.began = true;
-  
+   console.log(this);
+
  },
+
  tick: function (t, dt) {
-   this.time += dt;
-   this.animation.tick(this.time);
+   //console.log(dt);
+   //camera.setAttribute('position', '0, 10, 0')
+   this.el.attributes.position.value = '0 9 0';
  }
 });
