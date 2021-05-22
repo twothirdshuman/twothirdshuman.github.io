@@ -1,4 +1,4 @@
-import './styles.css'
+import './style.css'
 
 import * as THREE from 'https://threejs.org/build/three.js';
 
