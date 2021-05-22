@@ -40,7 +40,11 @@ scene.add(pointLight, ambientLight);
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
 
-const controls = new OrbitControls(camera, renderer.domElement);
+//const controls = new OrbitControls(camera, renderer.domElement);
+const statsVR = new StatsVR(scene, camera);
+statsVR.setX(0);
+statsVR.setY(0);
+statsVR.setZ(-2);
 
 
 function AddStar() {
@@ -55,7 +59,7 @@ function AddStar() {
 }
 
 Array(200).fill().forEach(AddStar);
-
+/*
 function animate() {
   requestAnimationFrame(animate); 
 
@@ -69,3 +73,11 @@ function animate() {
 }
 
 animate()
+*/
+
+function render() {
+  statsVR.update();
+  renderer.render(scene, camera);
+}
+
+renderer.setAnimationLoop(render);
