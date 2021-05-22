@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Three.js TypeScript Tutorials by Sean Bradley : https://sbcode.net/threejs</title>
+    <meta name="author" content="Sean Bradley">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/view_source/statsvr-1.html" id="vwSrcLink" target="_blank">&lt;&gt;</a>
+    <script type="module">
+        import * as THREE from '/build/three.module.js';
+        import StatsVR from './utils/statsvr.js';
+        import { VRButton } from '/jsm/webxr/VRButton.js';
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.xr.enabled = true;
+        document.body.appendChild(renderer.domElement);
+        document.body.appendChild(VRButton.createButton(renderer));
+        var floor = new THREE.Mesh(new THREE.PlaneBufferGeometry(100, 100, 10, 10), new THREE.MeshBasicMaterial({
+            color: 0x008800,
+            wireframe: true
+        }));
+        floor.rotation.x = Math.PI / -2;
+        floor.position.y = -0.001;
+        scene.add(floor);
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        const statsVR = new StatsVR(scene, camera);
+        //change default statsvr position
+        statsVR.setX(0);
+        statsVR.setY(0);
+        statsVR.setZ(-2);
+        function render() {
+            statsVR.update();
+            renderer.render(scene, camera);
+        }
+        renderer.setAnimationLoop(render);
+    </script>
+</body>
+
+</html>
