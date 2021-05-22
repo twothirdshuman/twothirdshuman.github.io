@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+import * as THREE from 'three';//'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 
 const scene = new THREE.Scene();
 
@@ -14,3 +14,16 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 renderer.render(scene, camera);
+
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);
+const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true } );
+const torus = new THREE.Mesh(geometry, material);
+
+scene.add(torus);
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render();
+}
+
+animate();
