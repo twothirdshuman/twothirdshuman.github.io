@@ -16,9 +16,9 @@
 <body>
     <a href="/view_source/statsvr-1.html" id="vwSrcLink" target="_blank">&lt;&gt;</a>
     <script type="module">
-        import * as THREE from '/build/three.module.js';
-        import StatsVR from './utils/statsvr.js';
-        import { VRButton } from '/jsm/webxr/VRButton.js';
+        import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+        import StatsVR from 'https://sbcode.net/threejs/statsvr-1/utils/statsvr.js';
+        import { VRButton } from 'https://sbcode.net/threejs/statsvr-1/jsm/webxr/VRButton.js';
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true });
