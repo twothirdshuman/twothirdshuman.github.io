@@ -1,5 +1,3 @@
-import './style.css'
-
 import * as THREE from 'https://threejs.org/build/three.js';
 
 const scene = new THREE.Scene();
