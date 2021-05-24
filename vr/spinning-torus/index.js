@@ -2,7 +2,7 @@ import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/thr
 
 import { OrbitControls } from './OrbitControls.js';
 let container = document.querySelector('#container');
-container.appendChild(canvas);
+
 const scene = new THREE.Scene();
 
 
