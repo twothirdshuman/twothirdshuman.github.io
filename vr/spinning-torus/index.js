@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 
 import { OrbitControls } from './OrbitControls.js';
-import { VRButton } from 'https://sbcode.net/threejs/statsvr-1/jsm/webxr/VRButton.js';
+import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/VRButton.min.js";
 let container = document.querySelector('#container');
 
 const scene = new THREE.Scene();
