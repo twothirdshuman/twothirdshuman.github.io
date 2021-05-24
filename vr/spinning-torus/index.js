@@ -1,7 +1,4 @@
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
-import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/VRButton.min.js";
-import { XRControllerModelFactory } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/XRControllerModelFactory.min.js";
-
 
 import { OrbitControls } from './OrbitControls.js';
 
@@ -10,17 +7,12 @@ const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
-})
+let renderer = new THREE.WebGLRenderer({ antialias : true });
+    renderer.xr.enabled = true;
+    container.appendChild(VRButton.createButton(renderer));
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-
-renderer.xr.enabled = true;
-
-document.body.appendChild(VRButton.createButton(renderer));
-
 camera.position.setZ(30);
 
 renderer.render(scene, camera);
@@ -40,11 +32,7 @@ scene.add(pointLight, ambientLight);
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
 
-//const controls = new OrbitControls(camera, renderer.domElement);
-const statsVR = new StatsVR(scene, camera);
-statsVR.setX(0);
-statsVR.setY(0);
-statsVR.setZ(-2);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 
 function AddStar() {
@@ -59,7 +47,7 @@ function AddStar() {
 }
 
 Array(200).fill().forEach(AddStar);
-/*
+
 function animate() {
   requestAnimationFrame(animate); 
 
@@ -73,11 +61,3 @@ function animate() {
 }
 
 animate()
-*/
-
-function render() {
-  statsVR.update();
-  renderer.render(scene, camera);
-}
-
-renderer.setAnimationLoop(render);
