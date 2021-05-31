@@ -7,15 +7,18 @@ let container = document.querySelector('#container');
 const scene = new THREE.Scene();
 
 
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+let camera = new THREE.PerspectiveCamera(
+  45, //Field of View Angle
+  window.innerWidth / window.innerHeight, //Aspect Ratio
+  0.1, //Clipping for things closer than this amount
+  1000 //Clipping for things farther than this amount
+);
 
 let renderer = new THREE.WebGLRenderer({ antialias : true });
-    renderer.xr.enabled = true;
-    container.appendChild(VRButton.createButton(renderer));
+renderer.xr.enabled = true;
+container.appendChild(VRButton.createButton(renderer));
 
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setY(1.7);
 
 renderer.render(scene, camera);
 
@@ -50,16 +53,17 @@ function AddStar() {
 
 Array(200).fill().forEach(AddStar);
 
-function animate() {
-  requestAnimationFrame(animate); 
+
+
+function update() {
+  let timeDelta = clock.getDelta();
 
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
 
-  controls.update();
+  //controls.update();
 
   renderer.render(scene, camera);
 }
-
-animate()
+renderer.setAnimationLoop(update);
