@@ -4,7 +4,7 @@ import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/js
 export default function main() {
     //Create renderer + Canvas
     let container = document.querySelector('#container');
-    
+
     let renderer = new THREE.WebGLRenderer({ antialias : true });
     renderer.xr.enabled = true;
     container.appendChild(VRButton.createButton(renderer));
@@ -52,7 +52,7 @@ export default function main() {
     shapes.add(sphereMesh);
     shapes.add(cubeMesh);
     shapes.position.setY(1.7); //Place at eye level
-    shapes.position.setZ(-10); //Move shape forward so we can see it
+    shapes.position.setZ(-2); //Move shape forward so we can see it
     scene.add(shapes);
     
     //Add light to the scene
