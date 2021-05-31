@@ -53,7 +53,7 @@ function AddStar() {
 
 Array(200).fill().forEach(AddStar);
 
-
+let clock = new THREE.Clock();
 
 function update() {
   let timeDelta = clock.getDelta();
