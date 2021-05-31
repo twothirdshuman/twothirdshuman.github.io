@@ -18,6 +18,10 @@ let renderer = new THREE.WebGLRenderer({ antialias : true });
 renderer.xr.enabled = true;
 container.appendChild(VRButton.createButton(renderer));
 
+let canvas = renderer.domElement;
+container.appendChild(canvas);
+renderer.setSize(window.innerWidth, window.innerHeight);
+
 camera.position.setY(1.7);
 
 renderer.render(scene, camera);
