@@ -1,9 +1,14 @@
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/VRButton.min.js";
 
 export default function main() {
     //Create renderer + Canvas
     let container = document.querySelector('#container');
+    
     let renderer = new THREE.WebGLRenderer({ antialias : true });
+    renderer.xr.enabled = true;
+    container.appendChild(VRButton.createButton(renderer));
+
     let canvas = renderer.domElement;
     container.appendChild(canvas);
     renderer.setSize(window.innerWidth, window.innerHeight);
