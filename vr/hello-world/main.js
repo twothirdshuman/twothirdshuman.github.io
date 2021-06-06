@@ -72,7 +72,17 @@ export default function main() {
 
     const controllerModelFactory = new XRControllerModelFactory();
 
+    //hand 1
     
+    let controllerGrip1 = renderer.xr.getControllerGrip( 0 );
+	controllerGrip1.add( controllerModelFactory.createControllerModel( controllerGrip1 ) );
+	scene.add( controllerGrip1 );
+    
+    //hand 2
+    
+    let controllerGrip2 = renderer.xr.getControllerGrip( 1 );
+	controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
+	scene.add( controllerGrip2 );
     
     //Our animation loop
     let clock = new THREE.Clock(); //Need to keep track of time elapsed between frames
