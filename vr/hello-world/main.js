@@ -1,5 +1,7 @@
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 import { VRButton } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/VRButton.min.js";
+import { XRControllerModelFactory } from 'https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/webxr/XRControllerModelFactory.js'
+
 
 export default function main() {
     //Create renderer + Canvas
@@ -59,6 +61,35 @@ export default function main() {
     let light = new THREE.PointLight();
     light.position.setY(2);
     scene.add(light);
+
+    //add the controllers in webxr
+
+    let controller1 = renderer.xr.getController( 0 );
+    scene.add( controller1 );
+
+    let controller2 = renderer.xr.getController( 1 );
+    scene.add( controller2 );
+
+    const controllerModelFactory = new XRControllerModelFactory();
+
+    // Hand 1
+    let controllerGrip1 = renderer.xr.getControllerGrip( 0 );
+    controllerGrip1.add( controllerModelFactory.createControllerModel( controllerGrip1 ) );
+    scene.add( controllerGrip1 );
+
+    let hand1 = renderer.xr.getHand( 0 );
+    hand1.add( handModelFactory.createHandModel( hand1 ) );
+
+    scene.add( hand1 );
+
+    // Hand 2
+    let controllerGrip2 = renderer.xr.getControllerGrip( 1 );
+    controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
+    scene.add( controllerGrip2 );
+
+    let hand2 = renderer.xr.getHand( 1 );
+    hand2.add( handModelFactory.createHandModel( hand2 ) );
+    scene.add( hand2 );
     
     //Our animation loop
     let clock = new THREE.Clock(); //Need to keep track of time elapsed between frames
