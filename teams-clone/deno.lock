@@ -1,0 +1,14 @@
+{
+  "version": "4",
+  "redirects": {
+    "https://esm.sh/seroval@^0.10.4?target=denonext": "https://esm.sh/seroval@0.10.4?target=denonext"
+  },
+  "remote": {
+    "https://esm.sh/seroval@0.10.4/denonext/seroval.mjs": "2f560b4f4b98eb7ca9f658d13914d25847d06615ec65913ddd62c8c1e4399c9e",
+    "https://esm.sh/seroval@0.10.4?target=denonext": "86ddc5fc35f653d0ef0d6f5b73700650fb6a4a1d73c829135eef7b35b1986bf6",
+    "https://esm.sh/solid-js@1.8.1/denonext/html.mjs": "ce47027f5bfb608b25f322393570bb72199402771f7055aa9cde4b391e0f26f1",
+    "https://esm.sh/solid-js@1.8.1/denonext/solid-js.mjs": "14199c0e68f13ecd999d437be3f5713b07ce4c48909bcee945543d526dc8b36f",
+    "https://esm.sh/solid-js@1.8.1/denonext/web.mjs": "081aad5aa6060e93d662cb59c953ae0b48b21af2016b5c9027659ad63ff66115",
+    "https://esm.sh/solid-js@1.8.1/html": "054ee0a2ec776bb3c6203e2c321e299b705e9faf9fccc14a699ab5c01d0a26af"
+  }
+}

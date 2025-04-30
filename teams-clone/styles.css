@@ -1,0 +1,248 @@
+:root {
+    --darkest: #0a0a0a;
+    --selected: #7f85f5;
+    --unselcted: #adadad;
+    --main-bg: #1f1f1f;
+    --panel: #292929;
+    --mainBlue: #4f52b2;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+    color: var(--unselcted);
+}
+
+b {
+    color: white;
+}
+
+.mainRoot {
+    display: flex;
+    flex-direction: row;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+@media screen and (max-width: 800px) {
+    .mainRoot {
+        flex-direction: column;
+    }
+}
+
+.mainNav {
+    background-color: var(--darkest);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (max-width: 800px) {
+    .mainNav {
+        flex-direction: row;
+        height: 50px;
+        width: 100vw;
+    }
+}
+
+.viewParent {
+    width: 100%;
+    flex: 1;
+    background-color: var(--main-bg);
+    color: var(--unselcted);
+}
+
+.svgParent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.svgParent > svg {
+    color: var(--unselcted);
+}
+
+.navButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80px;
+}
+
+
+.navName {
+    color: var(--unselcted);
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.calendar-top-bar-right {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+}
+
+.calendar-top-bar-right > div {
+    user-select: none;
+    color: white;
+    box-sizing: border-box;
+    border: 1px solid var(--unselcted);
+    background-color: var(--panel);
+    padding: 6px;
+    margin: 6px;
+    height: calc(60px - 12px);
+    line-height: calc(32px);
+    font-size: 125%;
+    font-weight: 700;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 6px;
+}
+
+.day-text-calendar {
+    display: inline-block;
+    width: 100%;
+}
+
+.day-text-calendar > span:first-child {
+    margin-left: 24px;
+}
+
+.day-text-calendar > * {
+    margin: 12px;
+    font-weight: 350;
+    user-select: none;
+}
+
+.day-text-calendar > span {
+    font-size: 200%;
+}
+
+.calendar-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.calendar-main > * {
+    flex: 0;
+}
+
+.calendar-grid {
+    background-color: black;
+    flex: 1;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 60px repeat(5, 1fr);
+    grid-template-rows: 60px repeat(9, 1fr);
+    gap: 1px; 
+}
+
+.calendar-grid > div {
+    background-color: var(--main-bg);
+}
+
+.calendar-date {
+    font-size: 200%;
+    line-height: 60px;
+    padding-left: 6px;
+}
+
+.calendar-grid > *:nth-child(21n) {
+    background-color: var(--mainBlue);
+}
+
+.calendar-grid > *:nth-child(21n)::before {
+    content: "Pipebombing";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    color: color-mix(in srgb, var(--mainBlue) 20%, white 80%);
+}
+
+.calendar-grid > *:nth-child(23n) {
+    background-color: var(--mainBlue);
+}
+
+.calendar-grid > *:nth-child(23n)::before {
+    content: "computer charger class";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    color: color-mix(in srgb, var(--mainBlue) 20%, white 80%);
+}
+
+.calendar-grid > *:nth-child(20n) {
+    background-color: var(--mainBlue);
+}
+
+.calendar-grid > *:nth-child(20n)::before {
+    content: "tiktok-inator class";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    color: color-mix(in srgb, var(--mainBlue) 20%, white 80%);
+}
+
+.calendar-grid > *:nth-child(16n) {
+    background-color: var(--mainBlue);
+}
+
+.calendar-grid > *:nth-child(16n)::before {
+    content: ":3 class";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    color: color-mix(in srgb, var(--mainBlue) 20%, white 80%);
+}
+
+.children-margin > * {
+    margin: 12px;
+}   
+
+.children-white > * {
+    color: white;
+}
+
+.single-assignment {
+    background-color: var(--panel);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 12px;
+}
+
+.single-assignment > * {
+    display: block;
+}
+
+h4 {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    color: white;
+}
+
+.activity-view-main {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 50px 1fr;
+    gap: 1px;
+    background-color: black;
+    height: 100%;
+}
+
+.activity-view-main > * {
+    background-color: var(--main-bg);
+}
