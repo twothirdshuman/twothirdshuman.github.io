@@ -1,4 +1,32 @@
 import html from "https://esm.sh/solid-js@1.8.1/html";
+import { createSignal } from "https://esm.sh/solid-js@1.8.1";
+/**
+ * 
+ * @param {number} nr 
+ * @param {string} weekday 
+ */
+function Date(nr, weekday) {
+    const [getText, setText] = createSignal(`${nr} ${weekday}`);
+    
+    /**
+     * 
+     * @param {HTMLDivElement} el 
+     */
+    const elFunc = (el) => {
+        window.addEventListener("resize", (e) => {
+            console.log("ere");
+            if (el.clientWidth < 170) {
+                setText(`${nr}`);
+            } else {
+                setText(`${nr} ${weekday}`);
+            }
+        });
+    };
+
+    return html`
+        <div class="calendar-date" ref=${elFunc}>${getText}</div>
+    `;
+}
 
 function calendarView() {
     return html`
@@ -54,18 +82,18 @@ function calendarView() {
                         font-size: 150%;
                         font-weight: 500;
                         margin-right: 30px;
-                    ">Arbetsveckan</span>
+                    " class="calendar-workweek-span">Arbetsveckan</span>
                 </div>
             </div>
             <div style="width: 100%; border-top: 1px solid black;"></div>
             <div class="calendar-grid">
             
                 <div></div>
-                <div class="calendar-date">21 Måndag</div>
-                <div class="calendar-date">22 Tisdag</div>
-                <div class="calendar-date">23 Onsdag</div>
-                <div class="calendar-date">24 Torsdag</div>
-                <div class="calendar-date">25 Fredag</div>
+                ${Date(21, "Måndag")}
+                ${Date(22, "Tisdag")}
+                ${Date(23, "Onsdag")}
+                ${Date(24, "Torsdag")}
+                ${Date(25, "Fredag")}
                             
                 <div>07:00</div>
                 <div></div>

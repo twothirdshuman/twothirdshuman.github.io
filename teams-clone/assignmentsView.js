@@ -3,7 +3,7 @@ import html from "https://esm.sh/solid-js@1.8.1/html";
 function assignmentsView() {
     return html`
         <div style="display: flex; flex-direction: column;">
-            <div style="display: flex; font-size: 150%;" class="children-margin children-white">
+            <div class="assignment-sort children-margin children-white">
                 <div style="font-weight: 600; border-bottom: 1px solid var(--mainBlue);">
                     Kommande
                 </div>

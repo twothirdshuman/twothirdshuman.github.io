@@ -51,6 +51,7 @@ b {
 @media screen and (max-width: 800px) {
     .mainNav {
         flex-direction: row;
+        justify-content: space-between;
         height: 50px;
         width: 100vw;
     }
@@ -159,6 +160,7 @@ b {
     font-size: 200%;
     line-height: 60px;
     padding-left: 6px;
+    text-align: center;
 }
 
 .calendar-grid > *:nth-child(21n) {
@@ -166,7 +168,7 @@ b {
 }
 
 .calendar-grid > *:nth-child(21n)::before {
-    content: "Pipebombing";
+    content: "Pipe​bombing";
     position: relative;
     top: 3px;
     left: 3px;
@@ -190,7 +192,7 @@ b {
 }
 
 .calendar-grid > *:nth-child(20n)::before {
-    content: "tiktok-inator class";
+    content: "tiktok​inator class";
     position: relative;
     top: 3px;
     left: 3px;
@@ -215,6 +217,18 @@ b {
 
 .children-white > * {
     color: white;
+}
+
+@media screen and (max-width: 670px) {
+    .calendar-top-bar-right {
+        display: none;
+    }
+    
+}
+@media screen and (max-width: 500px) {
+    .calendar-workweek-span {
+        display: none;
+    }
 }
 
 .single-assignment {
@@ -243,6 +257,23 @@ h4 {
     height: 100%;
 }
 
+@media screen and (max-width: 800px) {
+    .activity-view-main {
+        grid-template-columns: 200px 1fr;
+    }
+}
+
 .activity-view-main > * {
     background-color: var(--main-bg);
+}
+
+.assignment-sort {
+    display: flex; 
+    font-size: 150%;
+}
+
+@media screen and (max-width: 800px) {
+    .assignment-sort {
+        font-size: 100%;
+    }
 }

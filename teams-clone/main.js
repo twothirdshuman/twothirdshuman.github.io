@@ -51,9 +51,8 @@ function DeafultView() {
 const [getScreenWidth, setScreenWidth] = createSignal(document.body.clientWidth);
 
 window.addEventListener("resize", () => {
-    console.log(document.body.clientWidth);
     setScreenWidth(document.body.clientWidth);
-});
+}); 
 
 /**
  * 
