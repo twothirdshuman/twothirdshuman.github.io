@@ -13,14 +13,16 @@ function Date(nr, weekday) {
      * @param {HTMLDivElement} el 
      */
     const elFunc = (el) => {
-        window.addEventListener("resize", (e) => {
+        const resizeFunc = () => {
             console.log("ere");
             if (el.clientWidth < 170) {
                 setText(`${nr}`);
             } else {
                 setText(`${nr} ${weekday}`);
             }
-        });
+        };
+        resizeFunc();
+        window.addEventListener("resize", resizeFunc);
     };
 
     return html`
