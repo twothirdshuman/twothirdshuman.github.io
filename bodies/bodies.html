@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three-Body Gravity Simulator</title>
+  <style>
+    body { margin: 0; background: black; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  class Body {
+    constructor(x, y, vx, vy, mass, color) {
+      this.x = x;
+      this.y = y;
+      this.vx = vx;
+      this.vy = vy;
+      this.mass = mass;
+      this.color = color;
+      this.trail = [];
+    }
+
+    update(dt) {
+      this.x += this.vx * dt;
+      this.y += this.vy * dt;
+      this.trail.push({x: this.x, y: this.y});
+      if (this.trail.length > 200) this.trail.shift();
+    }
+
+    draw(ctx) {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = this.color;
+      ctx.beginPath();
+      for (let i = 0; i < this.trail.length - 1; i++) {
+        ctx.moveTo(this.trail[i].x, this.trail[i].y);
+        ctx.lineTo(this.trail[i + 1].x, this.trail[i + 1].y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  const G = 10000; // gravitational constant (tuned for scale)
+  const dt = 0.000001;
+
+  const bodies = [
+    new Body(canvas.width / 2 - 86, canvas.height / 2, 8, 22.5, 10, "red"),
+    new Body(canvas.width / 2 + 100, canvas.height / 2, -10, -6.5, 10, "green"),
+    new Body(canvas.width / 2, canvas.height / 2 - 157, 2, -14.6, 10, "blue")
+  ];
+
+  function computeGravity(b1, b2) {
+    const dx = b2.x - b1.x;
+    const dy = b2.y - b1.y;
+    const distSq = dx * dx + dy * dy;
+    const dist = Math.sqrt(distSq);
+    const force = G * b1.mass * b2.mass / distSq;
+    const ax = force * dx / dist / b1.mass;
+    const ay = force * dy / dist / b1.mass;
+    return { ax, ay };
+  }
+
+  function update() {
+    const accelerations = bodies.map(() => ({x: 0, y: 0}));
+
+    for (let i = 0; i < bodies.length; i++) {
+      for (let j = 0; j < bodies.length; j++) {
+        if (i === j) continue;
+        const { ax, ay } = computeGravity(bodies[i], bodies[j]);
+        accelerations[i].x += ax;
+        accelerations[i].y += ay;
+      }
+    }
+
+    for (let i = 0; i < bodies.length; i++) {
+      bodies[i].vx += accelerations[i].x * dt;
+      bodies[i].vy += accelerations[i].y * dt;
+      bodies[i].update(dt);
+    }
+  }
+
+  function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    bodies.forEach(body => body.draw(ctx));
+  }
+
+  function loop() {
+    for (let i = 0; i < 100000; i++) {
+        update();
+    }
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+</script>
+</body>
+</html>
