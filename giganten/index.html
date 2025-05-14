@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+        }
+
+        img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        * {
+            transition: all .3s ease;
+        }
+
+        .flexy > * {
+            flex: 0;
+        }
+
+        .resize {
+            flex: 1 1 auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .c {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div style="
+            width: 300px;
+            height: 500px;
+        ">
+        <div id="AA" class="flexy" style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 300px;
+            height: 400px;
+        ">
+            <div>
+                Jämför &lt;3
+            </div>
+            <div>
+                Produktinformationsblad
+            </div>
+            <div class="resize">
+                <img src="https://bad-maker.mooo.com/images/logos/logo6.webp">
+            </div>
+            <div id="b" style="height: 0; overflow: hidden;">
+                Text<br>
+                Mer text<br>
+                Mer text<br>
+                Mer text<br>
+                Even more TEXT!!
+            </div>
+            <div class="c">Finns i andra varianter</div>
+            <div class="c"><b>Denna titel är bs</b></div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+            <div class="c">PENGAR! PENGAR! PENGAR!</div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <button id="a">WEEEEEEEEEEEE</button>
+    <script>
+        document.getElementById("AA").addEventListener("mouseenter", () => {
+            document.getElementById("b").style.overflow = "";
+            document.getElementById("b").style.height = "105px";
+        });
+
+        document.getElementById("AA").addEventListener("mouseleave", () => {
+            document.getElementById("b").style.overflow = "";
+            document.getElementById("b").style.height = "0px";
+        });
+        /*
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("a").addEventListener("click", () => {
+                
+            })
+        })*/    
+    </script>
+</body>
+</html>
